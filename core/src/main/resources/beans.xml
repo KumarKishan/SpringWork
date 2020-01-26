@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="numberGenerator" class="com.kishan.NumberGenratorImp"/>
+
+   <!--  Constructor Based Data Injection Bean Config
+   <bean id="game" class="com.kishan.GameImpl">
+        <constructor-arg ref="numberGenerator"/>
+    </bean>-->
+
+<!--    Setter Based Bean Configuration for Injecting Data-->
+    <bean id="game" class="com.kishan.GameImpl">  <!-- W can use  init-method="reset" method to Define the Init method for the Beam **2 Please take a Look-->
+        <property name="numberGenerator" ref="numberGenerator"/>
+    </bean>
+
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+</beans>
+
+<!--**2
+But it might Make our work Difficult because many Beans may have Different Init and Destroy method So to Overcome We can Use
+jsr250 post construct is a better way to use such using annotation we can specify it. Lets See that.
+
+-->

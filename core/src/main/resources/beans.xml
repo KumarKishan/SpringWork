@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:annotation-config/>
     <bean id="numberGenerator" class="com.kishan.NumberGenratorImp"/>
 
-   <!--  Constructor Based Data Injection Bean Config
-   <bean id="game" class="com.kishan.GameImpl">
-        <constructor-arg ref="numberGenerator"/>
-    </bean>-->
+    <!--  Constructor Based Data Injection Bean Config
+    <bean id="game" class="com.kishan.GameImpl">
+         <constructor-arg ref="numberGenerator"/>
+     </bean>-->
 
-<!--    Setter Based Bean Configuration for Injecting Data-->
+    <!--    Setter Based Bean Configuration for Injecting Data-->
     <bean id="game" class="com.kishan.GameImpl">  <!-- W can use  init-method="reset" method to Define the Init method for the Beam **2 Please take a Look-->
-        <property name="numberGenerator" ref="numberGenerator"/>
+        <!--<property name="numberGenerator" ref="numberGenerator"/>-->
     </bean>
-
-    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    <!--
+            This is Used for Call Back Methods But now we are Using the Autowiring Methods So we commented This
+        <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    -->
 
 </beans>
 
